@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Input from "./componenet/Input";
+import { useState } from "react";
+import "./App.css";
+import Text from "./componenet/Text";
 function App() {
+  const [itemList, setIteamList] = useState([]);
+
+  function addItemsvalue(itemsData) {
+    setIteamList([itemsData, ...itemList]);
+    console.log(itemList);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input addItemsvalue={addItemsvalue} />
+      <Text taskList={itemList} />
     </div>
   );
 }
